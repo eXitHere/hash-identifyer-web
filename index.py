@@ -631,3 +631,5 @@ def hash_identify(hash):
             # print("[+] "+str(algorithms[jerar[a]]))
 
     Element("outputDiv").write(output)
+    # Clear
+    jerar = []
