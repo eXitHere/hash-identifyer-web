@@ -22,7 +22,9 @@
 		<link rel="stylesheet" href="https://pyscript.net/unstable/pyscript.css" />
     <script defer src="https://pyscript.net/unstable/pyscript.js"></script>
 	</head>
-
+	<script>
+		let isLoading = false;
+	</script>
 	<body>
 		<py-script src="./index.py">  </py-script>
 		<header class="header">
@@ -40,7 +42,7 @@
 			<input type="text" name="focus" class="input-box" id="input-hashed" placeholder="Enter hashed"></input>
 
       <div class="wrap">
-        <button class="button" onclick=showX()>Submit</button>
+        <button class="button" onclick=submit() >Submit</button>
       </div>
 
       <pre id="outputDiv" class="output"></pre>
@@ -54,14 +56,18 @@
       </div>
 		</div>
     <script>
-      function showX(){
-        const hash = document.getElementById("input-hashed").value
-        if(hash) {
-          const calculate = pyscript.runtime.globals.get('hash_identify')
-          calculate(hash)
-          const outputDiv = document.getElementById("outputDiv")
-          outputDiv.style.display = 'block'
-        }
+      function submit(){
+				if(!isLoading) {
+					isLoading = true;
+					const hash = document.getElementById("input-hashed").value
+					if(hash) {
+						const calculate = pyscript.runtime.globals.get('hash_identify')
+						calculate(hash)
+						const outputDiv = document.getElementById("outputDiv")
+						outputDiv.style.display = 'block'
+					}
+					isLoading = false;
+				}
       }
     </script> 
 	</body>
