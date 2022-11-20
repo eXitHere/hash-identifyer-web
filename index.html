@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+		<title>Hash Identifier | eXitGuy</title>
+
+		<link
+			rel="icon"
+			type="image/ico"
+			href="https://exitguy.studio/assets/img/favicons/favicon.ico"
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@300&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="index.css" media="screen" />
+		<link rel="stylesheet" href="https://pyscript.net/unstable/pyscript.css" />
+    <script defer src="https://pyscript.net/unstable/pyscript.js"></script>
+	</head>
+
+	<body>
+		<py-script src="./index.py">  </py-script>
+		<header class="header">
+			<h1 class="glitched">Hash Identifier</h1>
+		</header>
+		<div
+			style="
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				margin-top: 12%;
+			"
+		>
+			<input type="text" name="focus" class="input-box" id="input-hashed" placeholder="Enter hashed"></input>
+
+      <div class="wrap">
+        <button class="button" onclick=showX()>Submit</button>
+      </div>
+
+      <pre id="outputDiv" class="output"></pre>
+
+      <div style="display: flex; flex-direction: row; margin-top: 40px; position: block; font-size: smaller; padding: 10px;">
+        <a style="margin-right: 3px;">Thanks</a>
+        <a style="margin-right: 3px; text-decoration: none" href="https://codepen.io/derekjp/details/ozEdgK">(codepen) derekjp</a>
+        <a style="margin-right: 3px; text-decoration: none" href="https://github.com/blackploit/hash-identifier/blob/master/hash-id.py">,(hash-id) blackploit</a>
+        <a style="margin-right: 3px; text-decoration: none" href="https://pyscript.net/">,pyscript.net</a> 
+      </div>
+		</div>
+    <script>
+      function showX(){
+        const hash = document.getElementById("input-hashed").value
+        if(hash) {
+          const calculate = pyscript.runtime.globals.get('hash_identify')
+          calculate(hash)
+          const outputDiv = document.getElementById("outputDiv")
+          outputDiv.style.display = 'block'
+        }
+      }
+    </script> 
+	</body>
+
+	<script>
+		$('header').append("<div class='glitch-window'></div>");
+		//fill div with clone of real header
+		$('h1.glitched').clone().appendTo('.glitch-window');
+	</script>
+</html>
